@@ -1,0 +1,23 @@
+^tmp_head^
+<div class="hero" ng-style="{'background-image': 'url(' + heroImage + ')'}">
+    <div class="hero-fade-top"></div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div id="search" class="col-md-4 col-sm-4">
+                Search Criteria:
+            </div>
+            <div id="articles" class="col-md-8 col-sm-9">
+                <ul>
+                    <li ng-repeat="listing in listings track by listing._id">
+                        <a ng-href="/jobs/{{listing._id}}">
+                            <span class="label label-default" ng-bind="listing.description"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+^angular^ ^tmp_footer^

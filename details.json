@@ -1,0 +1,45 @@
+{
+    "uid": "mw_theme",
+    "name": "MoveWithin Theme",
+    "description": "Site theme for MoveWithin",
+    "version": "0.1.0",
+    "pb_version": "0.5.x",
+    "author": {
+        "name": "PencilBlue",
+        "email": "info@pencilblue.org",
+        "website": "http://pencilblue.org",
+        "contributors": [
+            {
+                "name": "Nirav Shah",
+                "email": ""
+            }
+        ]
+    },
+    "settings": [
+        {
+            "name": "show_side_navigation",
+            "value": true
+        },
+        {
+            "name": "home_page_keywords",
+            "value": "movewithin,internal mobility"
+        },
+        {
+            "name": "home_page_description",
+            "value": "This is the landing page of the movewithin theme plugin."
+        }
+    ],
+    "permissions": {
+        "ACCESS_USER": [],
+        "ACCESS_WRITER": [],
+        "ACCESS_EDITOR": [],
+        "ACCESS_MANAGING_EDITOR": []
+    },
+    "main_module": {
+        "path": "movewithin.js"
+    },
+    "theme": {
+        "settings": [],
+        "content_templates":[]
+    }
+}

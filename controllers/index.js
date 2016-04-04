@@ -68,9 +68,8 @@ module.exports = function IndexModule(pb) {
             }
         };
         self.siteQueryService.q('mwtheme_settings', opts, function(err, settings) {
-            console.log("Site Settings:", settings[0].home_page_hero);
             var objects = {
-                logo: settings[0].home_page_hero
+                logo: settings[0].logo
             };
             self.ts.registerLocal('angular_script', '');
             self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));

@@ -1,23 +1,64 @@
 ^tmp_admin=head^
 <div class="col-md-9">
-    ^tmp_admin=elements=error_success^
-    ^tmp_admin=elements=sub_nav^
+    ^tmp_admin=elements=error_success^ ^tmp_admin=elements=sub_nav^ ^tmp_admin=elements=tab_nav^
     <form name="homePageForm" ng-submit="saveHomePage()" novalidate>
         <fieldset>
             <div class="tab-content">
-                <div class="tab-pane active" id="home_layout">
-                    ^tmp_admin=elements=hero_upload^
+                <div class="tab-pane active" id="hero">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            ^tmp_admin=elements=hero_upload^
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 1</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[0].headline" />
+                            </div>
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 1</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[0].copy" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 2</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[1].headline" />
+                            </div>
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 2</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[1].copy" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 3</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[2].headline" />
+                            </div>
+                            <div class="form-group">
+                                <label>^loc_HERO_HEADLINE^ 3</label>
+                                <input type="text" class="form-control" ng-model="homePageSettings.callouts[2].copy" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a class="btn btn-default" href="/admin/themes">
-                    <i class="fa fa-ban"></i>&nbsp;^loc_CANCEL^
-                </a>
-                ^tmp_admin=elements=save_button^
+                <div class="tab-pane" id="history">
+                </div>
+                <div class="tab-pane" id="features">
+                </div>
             </div>
+            <a class="btn btn-default" href="/admin/themes">
+                <i class="fa fa-ban"></i>&nbsp;^loc_CANCEL^
+            </a>
+            ^tmp_admin=elements=save_button^
         </fieldset>
     </form>
     <div id="hero_images_template" style="display: none">
-
     </div>
 </div>
-^tmp_angular=admin=settings=home_page_settings^
-^tmp_admin=footer^
+^tmp_angular=admin=settings=home_page_settings^ ^tmp_admin=footer^

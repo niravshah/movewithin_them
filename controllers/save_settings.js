@@ -28,7 +28,7 @@ module.exports = function SaveHomePageSettingsModule(pb) {
             var opts = {
                 where: {settings_type: 'home_page'}
             };
-            self.siteQueryService.q('mwtheme_settings', opts, function(err, homePageSettings) {
+            self.siteQueryService.q('mwtheme_settings', opts, function(err, homePageSettings) {                
                 if (util.isError(err)) {
                     return self.reqHandler.serveError(err);
                 }

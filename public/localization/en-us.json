@@ -1,3 +1,6 @@
 {
-    "LOGO_IMAGE":"Logo Image"
+    "LOGO_IMAGE":"Logo Image",
+    "SETTINGS_HERO": "Hero",
+    "SETTINGS_HISTORY" : "History",
+    "SETTINGS_FEATURES": "Key Features"
 }

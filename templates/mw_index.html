@@ -1,60 +1,6 @@
 ^tmp_mw_head^
-<body class="animsition"  ng-controller="PencilBlueController">
-    <!-- HEADER  -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <!--img src="/public/mw_theme/img/logo.png" alt="logo"-->
-                    <img ng-src="{{logo}}" alt="logo">
-                </a>
-            </div>
-
-            <div class="menu">
-                <!-- desktop navbar -->
-                <nav class="desktop-nav">
-                    <ul class="first-level">
-                        <li><a href="index.html" class="animsition-link">Home</a>
-                        </li>
-                        <li><a href="about.html" class="animsition-link">about us</a>
-                        </li>
-                        <li><a href="services.html" class="animsition-link">services</a>
-                        </li>
-                        <li><a href="">portfolio</a>
-                            <ul class="second-level">
-                                <li><a href="portfolio-1.html" class="animsition-link">portfolio list</a>
-                                </li>
-                                <li><a href="single-project.html" class="animsition-link">single project 1</a>
-                                </li>
-                                <li><a href="single-project-2.html" class="animsition-link">single project 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="">blog</a>
-                            <ul class="second-level">
-                                <li><a href="blog-1.html" class="animsition-link">posts list</a>
-                                </li>
-                                <li><a href="single-post.html" class="animsition-link">single post</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html" class="animsition-link">contact us</a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- mobile navbar -->
-                <nav class="mobile-nav"></nav>
-                <div class="menu-icon">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- HERO SECTION  -->
-    <div class="site-hero">
+    <div class="site-hero" id="home">
         <ul class="slides">
             <li>
                 <div><span class="small-title uppercase montserrat-text">we're</span>
@@ -72,7 +18,7 @@
     </div>
 
     <!-- HISTORY OF AGENCY -->
-    <div class="container">
+    <div class="container" id="history">
         <div class="agency">
             <div class="col-md-5 col-sm-12">
                 <div class="row">
@@ -95,7 +41,7 @@
 
 
     <!-- WHY CHOOSE US -->
-    <section class="services">
+    <section class="services" id="whyus">
         <div class="container">
             <div class="row">
                 <div class="section-title">
@@ -170,11 +116,11 @@
 
 
     <!-- PORTFOLIO -->
-    <section class="portfolio">
+    <section class="portfolio" id="openings">
         <div class="container">
             <div class="row">
                 <div class="section-title">
-                    <span>our portfolio</span>
+                    <span>current openings</span>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </div>
@@ -183,26 +129,31 @@
             <!-- categories  -->
             <div class="col-md-3">
                 <div class="row categories-grid wow fadeInLeft">
-                    <span class="montserrat-text uppercase">choose category</span>
-
+                    <!--span class="montserrat-text uppercase">filter location</span-->
                     <nav class="categories">
                         <ul class="portfolio_filter">
-                            <li><a href="" class="active" data-filter="*">all</a>
-                            </li>
-                            <li><a href="" data-filter=".photography">photography</a>
-                            </li>
-                            <li><a href="" data-filter=".web">webdesign</a>
-                            </li>
-                            <li><a href="" data-filter=".logo">logo</a>
-                            </li>
-                            <li><a href="" data-filter=".graphics">graphics</a>
-                            </li>
-                            <li><a href="" data-filter=".ads">advertising</a>
-                            </li>
-                            <li><a href="" data-filter=".fashion">fashion</a>
-                            </li>
+                            <li><a href="" class="active" data-filter="*">all</a></li>
+                            <li ng-repeat="(key, val) in locations"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            </li>                        
                         </ul>
                     </nav>
+                    <hr/>
+                    <nav class="categories">
+                        <ul class="portfolio_filter">
+                            <li><a href="" class="active" data-filter="*">all</a></li>
+                            <li ng-repeat="(key, val) in departments"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            </li>                        
+                        </ul>
+                    </nav>                    
+                    <hr/>
+                    <nav class="categories">
+                        <ul class="portfolio_filter">
+                            <li><a href="" class="active" data-filter="*">all</a></li>
+                            <li ng-repeat="(key, val) in roles"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            </li>                        
+                        </ul>
+                    </nav>                    
+                    
                 </div>
             </div>
 
@@ -210,130 +161,20 @@
             <div class="col-md-9">
                 <div class="row portfolio_container">
                     <!-- single work -->
-                    <div class="col-md-4 photography">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp">
+                    <div ng-repeat="listing in listings track by listing.name" class="col-md-4" ng-class="'{{listing.location}} {{listing.department}} {{listing.role}}'">
+                        <a href="#" class="portfolio_item work-grid wow fadeInUp">
+                            <p>{{listing.description}}</p>
                             <img src="/public/mw_theme/img/work-1.jpg" alt="image">
                             <div class="portfolio_item_hover">
                                 <div class="item_info">
-                                    <span>Brave man</span>
-                                    <em>photography</em>
+                                    <span>{{listing.role}}</span>
+                                    <em>{{listing.location}}</em>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 fashion logo">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".2s">
-                            <img src="/public/mw_theme/img/work-2.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>super man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 ads graphics">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".3s">
-                            <img src="/public/mw_theme/img/work-3.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>bat man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 fashion ads">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".4s">
-                            <img src="/public/mw_theme/img/work-1.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>spider man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 graphics ads">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".5s">
-                            <img src="/public/mw_theme/img/work-3.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>iron man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 logo web photography">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".6s">
-                            <img src="/public/mw_theme/img/work-2.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>iron man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 ads graphics">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".7s">
-                            <img src="/public/mw_theme/img/work-2.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>iron man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 web fashion photography">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".8s">
-                            <img src="/public/mw_theme/img/work-3.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>iron man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
-
-                    <!-- single work -->
-                    <div class="col-md-4 fashion logo">
-                        <a href="single-project.html" class="portfolio_item work-grid wow fadeInUp" data-wow-delay=".9s">
-                            <img src="/public/mw_theme/img/work-1.jpg" alt="image">
-                            <div class="portfolio_item_hover">
-                                <div class="item_info">
-                                    <span>iron man</span>
-                                    <em>photography</em>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- end single work -->
+                    
                 </div>
                 <!-- end row -->
             </div>
@@ -344,7 +185,7 @@
     <!-- portfolio -->
 
     <!-- newsletter -->
-    <section class="green-section wow fadeInUp" style="padding:50px 0">
+    <section class="green-section wow fadeInUp" style="padding:50px 0" id="contact">
         <div class="container">
             <div class="col-md-6 col-sm-12">
                 <div class="row">

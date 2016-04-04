@@ -9,7 +9,7 @@
 	<meta name="author" content="Amine Akhouad">
 	<meta name="description" content="AKAD is a creative and modern template for digital agencies">
 
-	<!-- STYLES -->
+	<!-- STYLES -->    
 	<link rel="stylesheet" href="/public/mw_theme/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/public/mw_theme/css/ionicons.min.css">
 	<link rel="stylesheet" href="/public/mw_theme/css/flexslider.css">
@@ -17,7 +17,44 @@
 	<link rel="stylesheet" href="/public/mw_theme/css/animate.css">
 	<link rel="stylesheet" href="/public/mw_theme/css/style.css">
     
+    <script type="text/javascript" src="/public/mw_theme/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="^angular_src^"></script>
     <script type="text/javascript" src="^angular_route_src^"></script>
     
 </head>
+    <body class="animsition"  ng-controller="PencilBlueController">
+    <!-- HEADER  -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <!--img src="/public/mw_theme/img/logo.png" alt="logo"-->
+                    <img ng-src="{{logo}}" alt="logo">
+                </a>
+            </div>
+
+            <div class="menu">
+                <!-- desktop navbar -->
+                <nav class="desktop-nav">
+                    <ul class="first-level">
+                        <li><a href="#home">home</a>
+                        </li>
+                        <li><a href="#whyus">why us</a>
+                        </li>
+                        <li><a href="#openings">current openings</a>
+                        </li>
+                        <li><a href="#contact">contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- mobile navbar -->
+                <nav class="mobile-nav"></nav>
+                <div class="menu-icon">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+

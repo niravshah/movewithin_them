@@ -1,0 +1,23 @@
+^tmp_admin=head^
+<div class="col-md-9">
+    ^tmp_admin=elements=error_success^
+    ^tmp_admin=elements=sub_nav^
+    <form name="homePageForm" ng-submit="saveHomePage()" novalidate>
+        <fieldset>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home_layout">
+                    ^tmp_admin=elements=hero_upload^
+                </div>
+                <a class="btn btn-default" href="/admin/themes">
+                    <i class="fa fa-ban"></i>&nbsp;^loc_CANCEL^
+                </a>
+                ^tmp_admin=elements=save_button^
+            </div>
+        </fieldset>
+    </form>
+    <div id="hero_images_template" style="display: none">
+
+    </div>
+</div>
+^tmp_angular=admin=settings=home_page_settings^
+^tmp_admin=footer^

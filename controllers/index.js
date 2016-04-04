@@ -61,12 +61,26 @@ module.exports = function IndexModule(pb) {
             currUrl: this.req.url,
             site: self.site
         };
-        self.ts.load('mw_index', function(err, result) {
-            if(util.isError(err)) {
-                throw err;
+        self.ts.registerLocal('page_name', "MoveWithin");
+        var opts = {
+            where: {
+                settings_type: 'home_page'
             }
-            cb({
-                content: result
+        };
+        self.siteQueryService.q('mwtheme_settings', opts, function(err, settings) {
+            console.log("Site Settings:", settings[0].home_page_hero);
+            var objects = {
+                logo: settings[0].home_page_hero
+            };
+            self.ts.registerLocal('angular_script', '');
+            self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));
+            self.ts.load('mw_index', function(err, result) {
+                if(util.isError(err)) {
+                    throw err;
+                }
+                cb({
+                    content: result
+                });
             });
         });
     };

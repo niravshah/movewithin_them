@@ -128,28 +128,29 @@
 
             <!-- categories  -->
             <div class="col-md-3">
+                <p>Available Filters:</p>
                 <div class="row categories-grid wow fadeInLeft">
                     <!--span class="montserrat-text uppercase">filter location</span-->
                     <nav class="categories">
                         <ul class="portfolio_filter">
-                            <li><a href="" class="active" data-filter="*">all</a></li>
-                            <li ng-repeat="(key, val) in locations"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            <li ng-repeat="(key, val) in locations">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled"></i> {{key}}</a>
                             </li>                        
                         </ul>
                     </nav>
                     <hr/>
                     <nav class="categories">
                         <ul class="portfolio_filter">
-                            <li><a href="" class="active" data-filter="*">all</a></li>
-                            <li ng-repeat="(key, val) in departments"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            <li ng-repeat="(key, val) in departments">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled"></i> {{key}}</a>
                             </li>                        
                         </ul>
                     </nav>                    
                     <hr/>
                     <nav class="categories">
                         <ul class="portfolio_filter">
-                            <li><a href="" class="active" data-filter="*">all</a></li>
-                            <li ng-repeat="(key, val) in roles"><a href="" data-filter=".{{key}}">{{key}} ({{val}})</a>
+                            <li ng-repeat="(key, val) in roles">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled" ></i> {{key}}</a>
                             </li>                        
                         </ul>
                     </nav>                    
@@ -159,21 +160,27 @@
 
             <!-- all works -->
             <div class="col-md-9">
+                <div class="row tagsinput-row">
+                    <span>Current Filters: Add filters from the Panel on the left</span>
+                    <input type="text" id="filter-ip" data-role="tagsinput"/>
+                    <a class="btn green btn-sm reset-btn">Reset Filters</a>
+                </div>
                 <div class="row portfolio_container">
                     <!-- single work -->
                     <div ng-repeat="listing in listings track by listing.name" class="col-md-4" ng-class="'{{listing.location}} {{listing.department}} {{listing.role}}'">
-                        <a href="#" class="portfolio_item work-grid wow fadeInUp">
-                            <p>{{listing.description}}</p>
+                        <a class="portfolio_item work-grid wow fadeInUp">
+                            <p>{{listing.role}} - {{listing.department}} - {{listing.location}}</p>
                             <img src="/public/mw_theme/img/work-1.jpg" alt="image">
                             <div class="portfolio_item_hover">
                                 <div class="item_info">
-                                    <span>{{listing.role}}</span>
-                                    <em>{{listing.location}}</em>
+                                    <span>{{listing.description}}</span>
+                                    <br/>
+                                    <button data-toggle="modal" data-target="#myModal"  type="button" class="btn green btn-sm" data-dismiss="modal">Details</button>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <!-- end single work -->
+                    <!-- end single work -->         
                     
                 </div>
                 <!-- end row -->
@@ -216,5 +223,26 @@
             </div>
         </div>
     </section>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn green" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+
+        </div>
+    </div>           
+
+
 ^tmp_angular=mw_index^
 ^tmp_mw_footer^

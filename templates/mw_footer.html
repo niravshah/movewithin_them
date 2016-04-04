@@ -55,6 +55,8 @@
 <script type="text/javascript" src="/public/mw_theme/js/jquery.animsition.min.js"></script>
 <script type="text/javascript" src="/public/mw_theme/js/wow.min.js"></script>
 <script type="text/javascript" src="/public/mw_theme/js/main.js"></script>
+<script type="text/javascript" src="/public/mw_theme/js/bootstrap-tagsinput.js"></script>
+
 <script type="text/javascript" src="/public/mw_listing/js/mw_listing_form.js"></script>
 
 
@@ -78,19 +80,28 @@
             filter: '*',
         });
         $('.portfolio_filter a').click(function() {
-            $('.portfolio_filter .active').removeClass('active');
-            $(this).addClass('active');
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
-                filter: selector,
-                animationOptions: {
-                    duration: 500,
-                    animationEngine: "jquery"
-                }
-            });
-            return false;
+            var selector = $(this).attr('data-value');
+            $('#filter-ip').tagsinput('add', selector);
+            resetIsotype();
+        });
+        $('.reset-btn').click(function() {
+            $('#filter-ip').tagsinput('removeAll');
+            resetIsotype();
+        })
+        $('#filter-ip').on('itemRemoved', function(event) {
+            resetIsotype();
         });
     });
+
+    function resetIsotype() {
+        $('.portfolio_container').isotope({
+            filter: $('#filter-ip').val(),
+            animationOptions: {
+                duration: 500,
+                animationEngine: "jquery"
+            }
+        });
+    }
 </script>
 </body>
 

@@ -1,0 +1,16 @@
+.bootstrap-tagsinput {
+    width:100%;
+    height: 40px;
+}
+.tagsinput-row {
+    padding-bottom: 40px;
+}
+.label-info {
+    background-color: #7beec7;
+    font-size:14px;
+    font-family:"Montserrat", sans-serif;
+}
+.reset-btn {
+    float:right;
+    margin-top:10px;
+}

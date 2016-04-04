@@ -62,25 +62,31 @@ module.exports = function IndexModule(pb) {
             site: self.site
         };
         self.ts.registerLocal('page_name', "MoveWithin");
-        var opts = {
-            where: {
-                settings_type: 'home_page'
-            }
-        };
+        
+        var opts = {where: {settings_type: 'home_page'}};
         self.siteQueryService.q('mwtheme_settings', opts, function(err, settings) {
-            var objects = {
-                logo: settings[0].logo
-            };
-            self.ts.registerLocal('angular_script', '');
-            self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));
-            self.ts.load('mw_index', function(err, result) {
+            
+            var cos = new pb.CustomObjectService();              
+            cos.loadTypeByName('mw_listing', function(err, contactType) {
                 if(util.isError(err)) {
-                    throw err;
+                    console.log("ERROR!! Couldnt find type:mw_listing")
+                } else {
+                    cos.findByType(contactType, function(err, lstngs) {                      
+                        
+                        var objects = {
+                            logo: settings[0].logo,
+                            listings: lstngs
+                        };          
+                        self.ts.registerLocal('angular_script', '');
+                        self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));
+                        self.ts.load('mw_index', function(err, result) {
+                            if(util.isError(err)) {throw err;}
+                            cb({content: result});
+                        });
+                    })
                 }
-                cb({
-                    content: result
-                });
             });
+
         });
     };
     /**

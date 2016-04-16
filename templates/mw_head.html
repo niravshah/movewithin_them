@@ -10,7 +10,15 @@
 	<meta name="description" content="AKAD is a creative and modern template for digital agencies">
 
 	<!-- STYLES -->    
-	<link rel="stylesheet" href="/public/mw_theme/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="^jquery_ui_css_src^">
+    <link rel="stylesheet" type="text/css" href="^bootstrap_css_src^">
+    <link rel="stylesheet" type="text/css" href="^font_awesome_src^">
+    <link rel="stylesheet" type="text/css" href="^jquery_file_upload_css_src^">
+    <link rel="stylesheet" type="text/css" href="^jquery_datetime_picker_css_src^">
+    <link rel="stylesheet" type="text/css" href="^ng_sortable_css_src^">
+    <link rel="stylesheet" type="text/css" href="^ng_sortable_style_css_src^">
+
+	<!--link rel="stylesheet" href="/public/mw_theme/css/bootstrap.min.css"-->
 	<link rel="stylesheet" href="/public/mw_theme/css/ionicons.min.css">
 	<link rel="stylesheet" href="/public/mw_theme/css/flexslider.css">
 	<link rel="stylesheet" href="/public/mw_theme/css/animsition.min.css">
@@ -19,10 +27,15 @@
     <link rel="stylesheet" href="/public/mw_theme/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/public/mw_theme/css/custom.css">
     
-    <script type="text/javascript" src="/public/mw_theme/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="^jquery_src^"></script>
+    <script type="text/javascript" src="^jquery_ui_js_src^"></script>
+    <script type="text/javascript" src="^jquery_ui_touch_punch_src^"></script>
+    <script type="text/javascript" src="^jquery_datetime_picker_js_src^"></script>
     <script type="text/javascript" src="^bootstrap_js_src^"></script>
     <script type="text/javascript" src="^angular_src^"></script>
     <script type="text/javascript" src="^angular_route_src^"></script>
+    
+    ^localization_script^
     
 </head>
     <body class="animsition"  ng-controller="PencilBlueController">
@@ -40,7 +53,7 @@
                 <!-- desktop navbar -->
                 <nav class="desktop-nav">
                     <ul class="first-level">
-                        <li><a href="#home">home</a>
+                        <li><a href="/">home</a>
                         </li>
                         <li><a href="#whyus">why us</a>
                         </li>
@@ -48,6 +61,11 @@
                         </li>
                         <li><a href="#contact">contact</a>
                         </li>
+                                                <li ng-if="!auth"><a href="/user/login">login</a>
+                        </li>
+                                                <li ng-if="auth"><a href="/logout">logout</a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- mobile navbar -->

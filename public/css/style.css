@@ -139,6 +139,12 @@ ul.social-icons li a:hover {
     margin: 0 auto 100px;
     text-align: center;
 }
+ .section-action {
+    width: 50%;
+    margin: 0 auto 100px;
+    text-align: center;
+}
+
 .section-title span {
     position: relative;
     z-index: 1;
@@ -161,6 +167,7 @@ ul.social-icons li a:hover {
     width: 60px;
     height: 20px;
 }
+
 .section-title p {
     line-height: 24px;
     color:#60606e;

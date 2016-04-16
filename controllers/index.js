@@ -48,6 +48,11 @@ module.exports = function IndexModule(pb) {
         };
         self.ts.registerLocal('page_name', "MoveWithin");
         
+        /*TopMenu.getTopMenu(self.session, self.localizationService, function(themeSettings, navigationObject, accountButtonsObject) {
+            console.log("TOPMENU", themeSettings, navigationObject, accountButtonsObject);
+        });*/
+        
+        
         var opts = {where: {settings_type: 'home_page'}};
         self.siteQueryService.q('mwtheme_settings', opts, function(err, settings) {
             
@@ -60,10 +65,12 @@ module.exports = function IndexModule(pb) {
                         
                         var objects = {
                             logo: settings[0].logo,
-                            listings: lstngs,
+                            auth:pb.security.isAuthenticated(self.session),
+                            writer:pb.security.isAuthorized(self.session, {authenticated: true, admin_level: pb.SecurityService.ACCESS_WRITER}),
                             locations:_.countBy(lstngs, "location"),
                             departments:_.countBy(lstngs, "department"),
-                            roles:_.countBy(lstngs, "role")
+                            roles:_.countBy(lstngs, "role"),
+                             listings: lstngs
                         };          
                         self.ts.registerLocal('angular_script', '');
                         self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));

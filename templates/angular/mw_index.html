@@ -1,5 +1,16 @@
+<script type="text/javascript" src="/js/angular/directives/wysiwyg.js"></script>
 <script type="text/javascript">
-    angular.module('pencilblueApp', []).controller('PencilBlueController', function($scope, $http, $sce, $window, $timeout) { 
+    angular.module('pencilblueApp', ['wysiwygElement']).controller('PencilBlueController', function($scope, $http, $sce, $window, $timeout) { 
         ^angular_objects^
+        //$scope.layout = $sce.trustAsHtml($scope.page_layout);
+        $scope.saveHomePage = function() {
+            $scope.page_layout = $scope.layout;
+        }
     });
+    
+    angular.module('pencilblueApp').filter('unsafe', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});
 </script>

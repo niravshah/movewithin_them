@@ -23,7 +23,8 @@ module.exports = function(pb) {
         var opts = {where: {settings_type: 'home_page'}};
         self.siteQueryService.q('mwtheme_settings', opts, function(err, settings) {
             var objects = {
-                logo: settings[0].logo
+                logo: settings[0].logo,
+                homePageSettings: {callouts: [{}, {}, {}], site:self.site}
             };
             self.ts.registerLocal('angular_script', '');
             self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));

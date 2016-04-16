@@ -1,0 +1,79 @@
+            <!-- categories  -->
+            <div class="col-md-3">
+                <p>Available Filters:</p>
+                <div class="row categories-grid wow fadeInLeft">
+                    <!--span class="montserrat-text uppercase">filter location</span-->
+                    <nav class="categories">
+                        <ul class="portfolio_filter">
+                            <li ng-repeat="(key, val) in locations">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled"></i> {{key}}</a>
+                            </li>                        
+                        </ul>
+                    </nav>
+                    <hr/>
+                    <nav class="categories">
+                        <ul class="portfolio_filter">
+                            <li ng-repeat="(key, val) in departments">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled"></i> {{key}}</a>
+                            </li>                        
+                        </ul>
+                    </nav>                    
+                    <hr/>
+                    <nav class="categories">
+                        <ul class="portfolio_filter">
+                            <li ng-repeat="(key, val) in roles">
+                                <a href="" data-value=".{{key}}"><i class="icon ion-plus-circled" ></i> {{key}}</a>
+                            </li>                        
+                        </ul>
+                    </nav>                    
+                    
+                </div>
+            </div>
+
+            <!-- all works -->
+            <div class="col-md-9">
+                <div class="row tagsinput-row">
+                    <span>Current Filters: Add filters from the Panel on the left</span>
+                    <input type="text" id="filter-ip" data-role="tagsinput"/>
+                    <a class="btn green btn-sm reset-btn">Reset Filters</a>
+                </div>
+                <div class="row portfolio_container">
+                    <!-- single work -->
+                    <div ng-repeat="listing in listings track by listing.name" class="col-md-6" ng-class="'{{listing.location}} {{listing.department}} {{listing.role}}'">
+                        <a class="portfolio_item work-grid wow fadeInUp">
+                            <p>{{listing.role}} - {{listing.department}} - {{listing.location}}</p>
+                            <!--img src="/public/mw_theme/img/work-1.jpg" alt="image"-->
+                            <span>{{listing.short}}</span>
+                            <div class="portfolio_item_hover">
+                                <div class="item_info">
+                                    
+                                    <br/>
+                                    <button data-toggle="modal" data-target="#modal{{listing.id}}"  type="button" class="btn green" data-dismiss="modal">Details</button>
+                                </div>
+                            </div>
+                        </a>
+                        <div id="modal{{listing.id}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">{{listing.role}} - {{listing.department}} - {{listing.location}}</h4>
+                                    </div>
+                                    <div class="modal-body" ng-bind-html="listing.description|unsafe">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn green" data-dismiss="modal">Apply</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>           
+                        
+                    </div>
+                    <!-- end single work -->         
+                    
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- all works end -->

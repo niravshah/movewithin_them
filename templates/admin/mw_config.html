@@ -1,0 +1,26 @@
+^tmp_mw_config_head^
+<div class="admin-site-hero">
+</div>
+<div class="container" style="padding-top:40px;">
+    <div class="row">
+        <div class="col-md-4">
+            <form name="homePageForm" ng-submit="saveHomePage()" novalidate>
+                <fieldset>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            ^tmp_admin=elements=hero_upload^
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="saving">
+                        <i class="fa" ng-class="{'fa-save': !saving, 'fa-circle-o-notch fa-spin': saving}"></i>&nbsp;^loc_SAVE^
+                    </button>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+^tmp_admin=elements=wysiwyg_scripts^
+^tmp_angular=mw_config_index^ 
+^tmp_mw_footer^

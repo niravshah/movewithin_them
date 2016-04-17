@@ -138,5 +138,13 @@
     color:#60606e;
 }
 
+.admin-site-hero {
+    height: 100px;
+    width: 100%;
+    background: #fff url("../img/site-hero.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
 
 

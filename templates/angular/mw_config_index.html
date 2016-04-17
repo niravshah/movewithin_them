@@ -1,0 +1,20 @@
+<script type="text/javascript">
+    angular.module('pencilblueApp', ['uploadPhoto']).controller('PencilBlueController', function($scope, $rootScope, $http, $sce, $window, $timeout) { 
+        ^angular_objects^
+            
+            $scope.settings = {}
+            $scope.saveHomePage = function() {
+            $scope.settings.logo = $rootScope.photoValue;
+            $scope.saving = true;
+			$http.post('/actions/admin/plugins/settings/mw_theme/home_page', $scope.settings)
+			.success(function(result) {
+				$scope.successMessage = result.message;
+				$scope.saving = false;
+			})
+			.error(function(error, status) {
+				$scope.errorMessage = error.message;
+				$scope.saving = false;
+			});
+        };
+    });
+</script>

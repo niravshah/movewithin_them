@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html ng-app="pencilblueApp">
+
+<head>
+    <title>movewithin</title>
+    <!-- META TAGS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/mw_theme/img/favicon.ico">
+    <meta name="author" content="Amine Akhouad">
+    <meta name="description" content="AKAD is a creative and modern template for digital agencies">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/lib/jquery/jquery.fileupload.css">
+    <link rel="stylesheet" type="text/css" href="/css/lib/jquery/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/lib/ng-sortable/ng-sortable.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/lib/ng-sortable/ng-sortable.style.min.css">
+
+    <!--link rel="stylesheet" href="/public/mw_theme/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="/public/mw_theme/css/ionicons.min.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/flexslider.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/animsition.min.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/animate.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/style.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/public/mw_theme/css/custom.css">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/jquery.datetimepicker.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+    <script type="text/javascript" src="/js/lib/ng-sortable/ng-sortable.min.js"></script>
+
+
+    <script type="text/javascript" src="/api/localization/script"></script>
+
+</head>
+
+<body class="animsition" ng-controller="PencilBlueController">
+    <!-- HEADER  -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <!--img src="/public/mw_theme/img/logo.png" alt="logo"-->
+                    <img ng-src="{{logo}}" alt="logo">
+                </a>
+            </div>
+            <div class="menu">
+                <!-- desktop navbar -->
+                <nav class="desktop-nav">
+                    <ul class="first-level">
+                        <li><a href="/mwadmin">config</a>
+                        </li>
+                        <li><a href="/mwadmin/openings/new">openings</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- mobile navbar -->
+                <nav class="mobile-nav"></nav>
+                <div class="menu-icon">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION  -->
+    <div class="admin-site-hero">
+    </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <form name="homePageForm" ng-submit="saveHomePage()" novalidate>
+                        <fieldset>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="hero">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div ng-controller="UploadPhotoController">
+                                                <div class="form-group">
+                                                    <label>Logo Image</label>
+                                                    <div ng-bind-html="getPhotoPreviewHTML()"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-info" ng-click="showMediaModal(false)">
+                                                        <i class="fa fa-link"></i>&nbsp;Link to image...
+                                                    </button>
+                                                    <button type="button" class="btn btn-info" ng-click="showMediaModal(true)">
+                                                        <i class="fa fa-upload"></i>&nbsp;Upload image...
+                                                    </button>
+                                                </div>
+                                                <div class="modal fade" id="photo_modal">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" ng-if="photo.isFile">
+                                                                Upload image
+                                                            </div>
+                                                            <div class="modal-header" ng-if="!photo.isFile">
+                                                                Link to image
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <span ng-if="photo.isFile">
+                        <div class="progress progress-striped active" ng-if="uploading">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{uploadPercent}}" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        </div>
+                        <span class="btn btn-success fileinput-button" ng-disabled="uploading">
+                            <i class="fa" ng-class="{'fa-plus': !uploading, 'fa-circle-o-notch fa-spin': uploading}"></i>
+                            <span>Select file...</span>
+                                                                <input type="file" ng-file-select="onFileSelect($files)" accept=".jpg,.jpeg,.png,.gif,.svg,.webp"></input>
+                                                                </span>
+                                                                <div class="file_drop" style="margin-bottom: 1em" ng-file-drop="onFileSelect($files)" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="file_drop_hover" ng-show="dropSupported && !uploading">Drop image files here</div>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                    <i class="fa fa-ban"></i>&nbsp;Cancel
+                                                                </button>
+                                                                </span>
+                                                                <div ng-if="!photo.isFile">
+                                                                    <div class="form-group">
+                                                                        <label>Image URL</label>
+                                                                        <input type="text" class="form-control" ng-model="photo.link" placeholder="image, YouTube, Vimeo, or Dailymotion link"></input>
+                                                                    </div>
+                                                                    <button type="button" class="btn btn-primary" ng-click="loadMediaLink()" ng-disabled="!photo.link.length || loadingLink">
+                                                                        <i class="fa" ng-class="{'fa-link': !loadingLink, 'fa-circle-o-notch fa-spin': loadingLink}"></i>&nbsp;Load link
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                        <i class="fa fa-ban"></i>&nbsp;Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/1.6.1/angular-file-upload.min.js"></script>
+                                            <script type="text/javascript" src="/js/angular/services/media.js"></script>
+                                            <script type="text/javascript">
+                                                angular.module('uploadPhoto', ['media', 'ui.sortable', 'angularFileUpload']).controller('UploadPhotoController', function($scope, $rootScope, $sce, $http, $upload, mediaService) {
+                                                    $scope.photoPreview = '';
+                                                    $scope.photo = {
+                                                        link: '',
+                                                        isFile: false
+                                                    };
+                                                    $scope.getPhotoPreviewHTML = function() {
+                                                        return $sce.trustAsHtml($scope.photoPreview);
+                                                    };
+                                                    $scope.showMediaModal = function(isFile) {
+                                                        $scope.photo.isFile = isFile;
+                                                        $('#photo_modal').modal({
+                                                            backdrop: 'static',
+                                                            keyboard: true
+                                                        });
+                                                    };
+                                                    $scope.loadMediaLink = function() {
+                                                        if(!$scope.photo.link.length) {
+                                                            return;
+                                                        }
+                                                        $scope.loadingLink = true;
+                                                        mediaService.loadMediaLink($scope.photo.link, function(err, result) {
+                                                            if(err) {
+                                                                $scope.loadingLink = false;
+                                                                $('#photo_modal').modal('hide');
+                                                                return;
+                                                            }
+                                                            $scope.photo.media_type = result.data.mediaType;
+                                                            $scope.photo.location = result.data.location;
+                                                            $scope.photo.thumb = result.data.thumb;
+                                                            $scope.photo.is_file = result.data.isFile;
+                                                            $rootScope.photoValue = $scope.photo.location;
+                                                            mediaService.getMediaPreview(result.data.media_type, result.data.location, function(err, result) {
+                                                                $scope.loadingLink = false;
+                                                                $('#photo_modal').modal('hide');
+                                                                if(err) {
+                                                                    return;
+                                                                }
+                                                                $scope.photoPreview = result.data;
+                                                            });
+                                                        });
+                                                    };
+                                                    $scope.onFileSelect = function($files) {
+                                                        for(var i = 0; i < $files.length && i < 1; i++) {
+                                                            var file = $files[i];
+                                                            $scope.uploading = true;
+                                                            $scope.uploadPercent = 0;
+                                                            $scope.upload = $upload.upload({
+                                                                url: '/api/admin/content/media/upload_media',
+                                                                file: file
+                                                            }).progress(function(evt) {
+                                                                $scope.uploadPercent = parseInt(100.0 * evt.loaded / evt.total);
+                                                            }).success(function(data, status, headers, config) {
+                                                                mediaService.loadMediaLink(data.filename, function(err, result) {
+                                                                    if(err) {
+                                                                        $scope.uploading = false;
+                                                                        return;
+                                                                    }
+                                                                    $scope.photo.media_type = result.data.media_type;
+                                                                    $scope.photo.location = result.data.location;
+                                                                    $scope.photo.thumb = result.data.thumb;
+                                                                    $scope.photo.is_file = result.data.isFile;
+                                                                    $rootScope.photoValue = $scope.photo.location;
+                                                                    mediaService.getMediaPreview(result.data.media_type, result.data.location, function(err, result) {
+                                                                        $scope.uploading = false;
+                                                                        $('#photo_modal').modal('hide');
+                                                                        if(err) {
+                                                                            return;
+                                                                        }
+                                                                        $scope.photoPreview = result.data;
+                                                                    });
+                                                                });
+                                                            });
+                                                        }
+                                                    };
+                                                    if($rootScope.photoValue) {
+                                                        mediaService.getMediaPreview('image', $rootScope.photoValue, function(err, result) {
+                                                            $scope.photoPreview = result.data;
+                                                        });
+                                                    }
+                                                });
+                                            </script>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="//rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+    <script type="text/javascript" src="//rangy.googlecode.com/svn/trunk/currentrelease/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="/js/lib/to_markdown/to-markdown.js"></script>
+    <script type="text/javascript" src="/js/lib/markdown/lib/markdown.js"></script>
+
+    <script type="text/javascript" src="/js/angular/directives/wysiwyg.js"></script>
+    <script type="text/javascript">
+        angular.module('pencilblueApp', ['wysiwygElement']).controller('PencilBlueController', function($scope, $http, $sce, $window, $timeout) {
+            $scope.logo = "/media/2016/4/a3fcdff2-1843-49ea-812f-a86d82574897-1460763036918.png";
+            $scope.homePageSettings = {
+                "callouts": [{}, {}, {}],
+                "site": "global"
+            };
+            //$scope.layout = $sce.trustAsHtml($scope.page_layout);
+            $scope.saveHomePage = function() {
+                $scope.page_layout = $scope.layout;
+            }
+        });
+        angular.module('pencilblueApp').filter('unsafe', function($sce) {
+            return function(val) {
+                return $sce.trustAsHtml(val);
+            };
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="main-footer wow fadeInUp">
+        <div class="container">
+            <div class="col-md-8 col-sm-12">
+                <div class="row">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#home">home</a>
+                            </li>
+                            <li><a href="#whyus">why us</a>
+                            </li>
+                            <li><a href="#openings">current openings</a>
+                            </li>
+                            <li><a href="#contact">contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/smoothScroll.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/jquery.animsition.min.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/wow.min.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/main.js"></script>
+    <script type="text/javascript" src="/public/mw_theme/js/bootstrap-tagsinput.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(window).load(function() {
+            new WOW().init();
+            // initialise flexslider
+            $('.site-hero').flexslider({
+                animation: "fade",
+                directionNav: false,
+                controlNav: false,
+                keyboardNav: true,
+                slideToStart: 0,
+                animationLoop: true,
+                pauseOnHover: false,
+                slideshowSpeed: 4000,
+            });
+            // initialize isotope
+            var $container = $('.portfolio_container');
+            $container.isotope({
+                filter: '*',
+            });
+            $('.portfolio_filter a').click(function() {
+                var selector = $(this).attr('data-value');
+                $('#filter-ip').tagsinput('add', selector);
+                resetIsotype();
+            });
+            $('.reset-btn').click(function() {
+                $('#filter-ip').tagsinput('removeAll');
+                resetIsotype();
+            })
+            $('#filter-ip').on('itemRemoved', function(event) {
+                resetIsotype();
+            });
+        });
+
+        function resetIsotype() {
+            $('.portfolio_container').isotope({
+                filter: $('#filter-ip').val(),
+                animationOptions: {
+                    duration: 500,
+                    animationEngine: "jquery"
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -33,7 +33,9 @@
     <script type="text/javascript" src="^jquery_datetime_picker_js_src^"></script>
     <script type="text/javascript" src="^bootstrap_js_src^"></script>
     <script type="text/javascript" src="^angular_src^"></script>
-    <script type="text/javascript" src="^angular_route_src^"></script>
+    <script type="text/javascript" src="^angular_route_src^"></script>  
+    <script type="text/javascript" src="^ng_sortable_js_src^"></script>    
+    
     
     ^localization_script^
     
@@ -43,29 +45,19 @@
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
+                <a href="/mwadmin">
                     <!--img src="/public/mw_theme/img/logo.png" alt="logo"-->
                     <img ng-src="{{logo}}" alt="logo">
                 </a>
             </div>
-
             <div class="menu">
                 <!-- desktop navbar -->
                 <nav class="desktop-nav">
                     <ul class="first-level">
-                        <li><a href="/">home</a>
+                        <li><a href="/mwadmin">config</a>
                         </li>
-                        <li><a href="#whyus">why us</a>
+                        <li><a href="/mwadmin/openings/new">openings</a>
                         </li>
-                        <li><a href="#openings">current openings</a>
-                        </li>
-                        <li><a href="#contact">contact</a>
-                        </li>
-                        <li ng-if="!auth"><a href="/user/login">login</a>
-                        </li>
-                        <li ng-if="auth"><a href="/logout">logout</a>
-                        </li>
-
                     </ul>
                 </nav>
                 <!-- mobile navbar -->

@@ -60,7 +60,23 @@
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">{{listing.role}} - {{listing.department}} - {{listing.location}}</h4>
                                     </div>
-                                    <div class="modal-body" ng-bind-html="listing.description|unsafe">
+                                    <div class="listing_contacts">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="listing_contact">
+                                                    <span>Hiring Contact : {{listing.hm_name}}</span>
+                                                    <button href="mailto:{{listing.hm_email}}" class="btn btn-sm green">EMAIL</button>
+                                                </div>
+                                                <div class="listing_contact">
+                                                    <span>HR Contact : {{listing.hr_name}}</span>
+                                                    <button href="mailto:{{listing.hr_email}}" class="btn btn-sm green">EMAIL</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                       
+
+                                    <div class="modal-body" >                                     
+                                        <div ng-bind-html="listing.description|unsafe"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn green" data-dismiss="modal">Apply</button>

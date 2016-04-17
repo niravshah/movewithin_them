@@ -122,5 +122,21 @@
     
 }
 
+.listing_contacts {
+    margin-bottom:20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.listing_contact {
+    margin: 20px 20px;
+}
+
+.listing_contact span {
+    z-index: 1;
+    font-family:"Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color:#60606e;
+}
+
 
 

@@ -54,7 +54,7 @@ body {
     margin-top: 150px;
 }
 .green-section {
-    background-color:#7beec7;
+    background-color:rgba(255, 116, 82, 0.43);
 }
 .white-section {
     background-color:#fff;
@@ -68,7 +68,7 @@ img {
 /*blockquote*/
  blockquote.bq {
     padding: 30px;
-    border-left: solid 10px #7beec7;
+    border-left: solid 10px rgba(255, 116, 82, 0.43);
     font-style: italic;
     font-size: 14px;
     line-height: 30px;
@@ -91,7 +91,7 @@ a.link:after {
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     -webkit-transition:all .2s ease-in-out;
     transition:all .2s ease-in-out;
 }
@@ -114,7 +114,7 @@ a:hover:after {
     color:white;
 }
 .green-text {
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
 }
 .gray-text {
     color:#999999;
@@ -131,7 +131,7 @@ p {
     line-height: 30px;
 }
 ul.social-icons li a:hover {
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
 }
 /*section's title*/
  .section-title {
@@ -159,7 +159,7 @@ ul.social-icons li a:hover {
 }
 .section-title span:after {
     content:"";
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     position: absolute;
     top:20px;
     left:0;
@@ -200,7 +200,7 @@ ul.list li:before {
     content:'\f374';
     position: absolute;
     left: 0;
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
 }
 /*list 2*/
  ul.list_2 li {
@@ -223,7 +223,7 @@ ul.list_2 li a > span {
     float: right;
 }
 ul.list_2 li a:hover {
-    border-bottom: solid 1px #7beec7;
+    border-bottom: solid 1px rgba(255, 116, 82, 0.43);
 }
 /*list 3 (tags)*/
  ul.tags {
@@ -289,12 +289,12 @@ ul.social-icons li a {
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 .btn.green {
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     color:#fff;
 }
 .btn.white {
     background-color: #fff;
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
 }
 .btn-sm {
     height: 20px;
@@ -321,7 +321,7 @@ ul.social-icons li a {
 }
 .tab nav .bottom-line {
     height: 2px;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -580,7 +580,7 @@ footer.main-footer nav.footer-nav ul li a {
 .site-hero .small-title {
     color:#60606e;
     padding: 7px 12px;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     display: inline-block;
 }
 .site-hero .big-title {
@@ -619,6 +619,60 @@ footer.main-footer nav.footer-nav ul li a {
 .site-hero_2 .page-title .small-title {
     font-size: 14px;
 }
+
+/*people-speak*/
+ .people-speak {
+    height: 350px;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.people-speak ul.slides {
+    height: 350px;
+    width: 100%;
+    position: absolute;
+}
+.people-speak ul.slides li {
+    opacity: 0;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    -webkit-transform:translate(-50%, -50%);
+    -ms-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+}
+
+.people-speak .employee-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+    -webkit-border-radius: 125px;
+    -moz-border-radius: 125px;
+}
+.people-speak .small-title {
+    color:#60606e;
+    padding: 7px 12px;
+    background-color: rgba(255, 116, 82, 0.43);
+    display: inline-block;
+}
+.people-speak .big-title {
+    font-size: 28px;
+    color:#60606e;
+    padding: 10px 40px;
+    border:solid 8px #60606e;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.people-speak p {
+    width: 50%;
+    margin: 0 auto;
+    color:#60606e;
+}
+
+/*end people-speak*/
+
 .agency {
     width: 100%;
     height: auto;
@@ -696,7 +750,7 @@ footer.main-footer nav.footer-nav ul li a {
 }
 .portfolio .categories-grid .categories ul li a.active {
     margin-left: 0;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     padding: 0 10px;
     color:white;
 }
@@ -760,7 +814,7 @@ footer.main-footer nav.footer-nav ul li a {
     font-style: normal;
     font-weight: 700;
     display: inline-block;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     padding: 5px;
     color:white;
     margin-top: 5px;
@@ -809,7 +863,7 @@ footer.main-footer nav.footer-nav ul li a {
     text-align: center;
 }
 .pages_pagination > a:hover {
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     color:white;
 }
 @media (max-width: 991px) {
@@ -891,7 +945,7 @@ footer.main-footer nav.footer-nav ul li a {
     z-index: 1;
 }
 .input_1 > span.active, .textarea_1 > span.active {
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
     font-size: 10px;
     top:0px;
     left: 5px;
@@ -947,7 +1001,7 @@ footer.main-footer nav.footer-nav ul li a {
     left: 0;
     height: 20px;
     width: 40px;
-    background-color :#7beec7;
+    background-color :rgba(255, 116, 82, 0.43);
     z-index: -1
 }
 .benefits_1_single > .title {
@@ -962,7 +1016,7 @@ footer.main-footer nav.footer-nav ul li a {
 }
 .benefits_2_single > i {
     display: inline-block;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     height: 40px;
     width: 40px;
     line-height: 40px;
@@ -980,7 +1034,7 @@ footer.main-footer nav.footer-nav ul li a {
 /* ##### 07 : PRICING PLANS STYLES  ##### */
  .pricing_plan {
     padding: 30px;
-    border-top: solid 5px #7beec7;
+    border-top: solid 5px rgba(255, 116, 82, 0.43);
     position: relative;
     -webkit-transition:all .2s ease-in-out;
     transition:all .2s ease-in-out;
@@ -994,7 +1048,7 @@ footer.main-footer nav.footer-nav ul li a {
     height: 0;
     border-left: 10px solid transparent;
     border-right: 0px solid transparent;
-    border-top: 10px solid #7beec7;
+    border-top: 10px solid rgba(255, 116, 82, 0.43);
 }
 .pricing_plan:hover {
     -webkit-transform:scale(1.01);
@@ -1007,7 +1061,7 @@ footer.main-footer nav.footer-nav ul li a {
     font-size: 30px;
 }
 .pricing_plan .plan_price {
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     padding: 5px 20px;
     color:white;
     font-size: 14px;
@@ -1060,7 +1114,7 @@ footer.main-footer nav.footer-nav ul li a {
 .team_member .team_member_hover .team_member_info .team_member_job {
     display: inline-block;
     margin-top: 10px;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     padding: 5px;
     font-family:"Montserrat", sans-serif;
     font-weight: 700;
@@ -1104,7 +1158,7 @@ footer.main-footer nav.footer-nav ul li a {
 }
 .testimonials_single .author_name {
     padding: 7px;
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     color:white;
     font-family:"Montserrat", sans-serif;
     text-transform: uppercase;
@@ -1169,7 +1223,7 @@ footer.main-footer nav.footer-nav ul li a {
     font-size: 11px;
     font-family:"Montserrat", sans-serif;
     text-transform: uppercase;
-    background-color:#7beec7;
+    background-color:rgba(255, 116, 82, 0.43);
     padding: 5px;
     color:white;
 }
@@ -1177,7 +1231,7 @@ footer.main-footer nav.footer-nav ul li a {
     margin-bottom: 20px
 }
 .post_info .post_date {
-    background-color: #7beec7;
+    background-color: rgba(255, 116, 82, 0.43);
     height: 30px;
     line-height: 30px;
     padding: 0 15px;
@@ -1290,14 +1344,14 @@ footer.main-footer nav.footer-nav ul li a {
     transition:all .2s ease-in-out;
 }
 .blog_pagination .page:hover i.prev {
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
     display: inline-block;
     -webkit-transform:translateX(10px);
     -ms-transform:translateX(10px);
     transform:translateX(10px);
 }
 .blog_pagination .page:hover i.next {
-    color:#7beec7;
+    color:rgba(255, 116, 82, 0.43);
     display: inline-block;
     -webkit-transform:translateX(-10px);
     -ms-transform:translateX(-10px);

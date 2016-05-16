@@ -17,9 +17,6 @@
                 </nav>
             </div>
         </div>
-
-
-        
     </div>
 </footer>
 
@@ -33,6 +30,8 @@
 <script type="text/javascript" src="/public/mw_theme/js/wow.min.js"></script>
 <script type="text/javascript" src="/public/mw_theme/js/main.js"></script>
 <script type="text/javascript" src="/public/mw_theme/js/bootstrap-tagsinput.js"></script>
+<script type="text/javascript" src="/public/mw_theme/js/pageguide.min.js"></script>
+
 
 <script type="text/javascript" charset="utf-8">
     $(window).load(function() {
@@ -48,20 +47,16 @@
             pauseOnHover: false,
             slideshowSpeed: 4000,
         });
-        
-       $('.people-speak').flexslider({
+        $('.people-speak').flexslider({
             animation: "fade",
+            slideToStart: 0,
             directionNav: false,
             controlNav: false,
             keyboardNav: true,
-            slideToStart: 0,
             animationLoop: true,
-            pauseOnHover: false,
+            pauseOnHover: true,
             slideshowSpeed: 4000,
         });
-         
-        
-        
         // initialize isotope
         var $container = $('.portfolio_container');
         $container.isotope({
@@ -79,6 +74,8 @@
         $('#filter-ip').on('itemRemoved', function(event) {
             resetIsotype();
         });
+        
+        var pageguide = tl.pg.init();
     });
 
     function resetIsotype() {

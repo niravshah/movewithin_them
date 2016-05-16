@@ -620,58 +620,6 @@ footer.main-footer nav.footer-nav ul li a {
     font-size: 14px;
 }
 
-/*people-speak*/
- .people-speak {
-    height: 350px;
-    width: 100%;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
-}
-.people-speak ul.slides {
-    height: 350px;
-    width: 100%;
-    position: absolute;
-}
-.people-speak ul.slides li {
-    opacity: 0;
-    text-align: center;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    -webkit-transform:translate(-50%, -50%);
-    -ms-transform:translate(-50%, -50%);
-    transform:translate(-50%, -50%);
-}
-
-.people-speak .employee-img{
-    width: 250px;
-    height: 250px;
-    border-radius: 125px;
-    -webkit-border-radius: 125px;
-    -moz-border-radius: 125px;
-}
-.people-speak .small-title {
-    color:#60606e;
-    padding: 7px 12px;
-    background-color: rgba(255, 116, 82, 0.43);
-    display: inline-block;
-}
-.people-speak .big-title {
-    font-size: 28px;
-    color:#60606e;
-    padding: 10px 40px;
-    border:solid 8px #60606e;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-.people-speak p {
-    width: 50%;
-    margin: 0 auto;
-    color:#60606e;
-}
-
-/*end people-speak*/
 
 .agency {
     width: 100%;

@@ -174,3 +174,38 @@
   margin-top: 0;
   padding: 100px 0px;
 }
+/*people-speak*/
+ .people-speak {
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.people-speak .row {
+  padding-bottom:60px;
+}
+.people-speak .employee-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  -webkit-border-radius: 125px;
+  -moz-border-radius: 125px;
+}
+.people-speak .small-title {
+  color:#60606e;
+  padding: 7px 12px;
+  background-color: rgba(255, 116, 82, 0.2);
+  display: inline-block;
+}
+.people-speak .big-title {
+  font-size: 24px;
+  color: #60606e;
+  border-bottom: solid 2px #60606e;
+  margin-bottom: 20px;
+}
+.people-speak p {
+  width: 80%;
+  color:#60606e;
+}
+
+/*end people-speak*/

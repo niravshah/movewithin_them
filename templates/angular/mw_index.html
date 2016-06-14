@@ -1,16 +1,31 @@
 <script type="text/javascript" src="/js/angular/directives/wysiwyg.js"></script>
 <script type="text/javascript">
-    angular.module('pencilblueApp', ['wysiwygElement']).controller('PencilBlueController', function($scope, $http, $sce, $window, $timeout) { 
+    var app = angular.module('pencilblueApp', ['wysiwygElement']);
+    app.controller('ProjectsController', function ($scope, $http) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+        $scope.getProjects = function () {
+            console.log("ng-init get projects function");
+            $http.get("/api/projects")
+            .then(function(response) {
+                $scope.projects = response.data;
+            });
+        }
+    });
+
+
+    app.controller('PencilBlueController', function ($scope) {
         ^angular_objects^
-        //$scope.layout = $sce.trustAsHtml($scope.page_layout);
-        $scope.saveHomePage = function() {
+        $scope.saveHomePage = function () {
             $scope.page_layout = $scope.layout;
         }
     });
-    
-    angular.module('pencilblueApp').filter('unsafe', function($sce) {
-    return function(val) {
-        return $sce.trustAsHtml(val);
-    };
-});
+
+    app.filter('unsafe', function ($sce) {
+        return function (val) {
+            return $sce.trustAsHtml(val);
+        };
+
+    });
+
 </script>

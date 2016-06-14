@@ -1,0 +1,45 @@
+<div class="col-md-12">
+    <div class="row portfolio_container">
+        <!-- single work -->
+        <div ng-repeat="listing in projects.data track by listing.name" class="col-md-6"
+             ng-class="'{{listing.location}} {{listing.department}} {{listing.role}}'">
+            <a class="portfolio_item work-grid wow fadeInUp">
+                <p>{{listing.name}}</p>
+                <span>{{listing.description}}</span>
+                <div class="portfolio_item_hover">
+                    <div class="item_info">
+                        <br/>
+                        <button data-toggle="modal" data-target="#modal{{listing._id}}" type="button" class="btn green"
+                                data-dismiss="modal">Details
+                        </button>
+                    </div>
+                </div>
+            </a>
+            <div id="modal{{listing._id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{listing.name}}</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <div ng-bind-html="listing.description|unsafe"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/projects/{{listing._id}}" target="_blank">Join</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- end single work -->
+
+    </div>
+    <!-- end row -->
+</div>
+<!-- all works end -->
